@@ -1,0 +1,13 @@
+[Unit]
+Description=Daemon with restricted file system access
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ls /etc /root/.ssh
+
+InaccessiblePaths=/root /home
+TemporaryFileSystem=/etc:ro
+BindReadOnlyPaths=/etc/ssl/certs /etc/resolv.conf
+
+[Install]
+WantedBy=multi-user.target

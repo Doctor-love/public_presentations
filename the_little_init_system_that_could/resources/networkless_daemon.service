@@ -1,0 +1,13 @@
+[Unit]
+Description=Daemon with isolated network access
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c \
+	  'ip --brief address show | tr -s " " \
+	  && ping 1.1.1.1'
+
+PrivateNetwork=true
+
+[Install]
+WantedBy=multi-user.target

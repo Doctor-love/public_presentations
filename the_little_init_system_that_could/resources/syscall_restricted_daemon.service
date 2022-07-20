@@ -1,0 +1,13 @@
+[Unit]
+Description=Daemon with restricted syscalls
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c 'modprobe 9pnet && echo loaded'
+
+# The tilde prefix inverts the match, meaning that all
+# syscalls are allowed except the listed ones
+SystemCallFilter=~@chown @debug @module
+
+[Install]
+WantedBy=multi-user.target

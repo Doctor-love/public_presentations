@@ -1,0 +1,13 @@
+[Unit]
+Description=Simple unprivileged HTTP server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 \
+	  -m http.server --directory /var/www 80
+
+User=notroot
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

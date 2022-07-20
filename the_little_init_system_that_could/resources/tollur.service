@@ -1,0 +1,9 @@
+[Unit]
+Description=Nimble and scriptable SMTP proxy
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tollur /etc/tollur/conf.ini
+
+[Install]
+WantedBy=multi-user.target
