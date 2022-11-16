@@ -1,0 +1,7 @@
+FROM python:3.11.0
+
+RUN pip install Flask==2.2.2
+COPY prototype_webapp.py .
+
+USER 10000
+CMD ["flask", "--app", "prototype_webapp", "run", "--host", "0.0.0.0"]
